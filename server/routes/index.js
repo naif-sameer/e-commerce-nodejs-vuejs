@@ -30,7 +30,7 @@ router.get('/products/:id', async (req, res) => {
   try {
     const { data } = await getProduct(productID);
 
-    res.json({ data, error: false });
+    res.json({ ...data, error: false });
   } catch (err) {
     res.json({ error: true, err });
   }
