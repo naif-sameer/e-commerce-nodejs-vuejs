@@ -9,9 +9,12 @@ const getCategories = () => axios.get(`${process.env.API_URL}/products/categorie
 
 const getCategoryProducts = (category) => axios.get(`${process.env.API_URL}/products/category/${category}`);
 
+const getProdcutSearch = (product) => axios.get(`${process.env.API_URL}/products/search?q=${product}`);
+
 module.exports = {
   getProducts,
   getProduct,
   getCategories,
   getCategoryProducts,
+  getProdcutSearch,
 };
