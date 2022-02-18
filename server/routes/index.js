@@ -1,39 +1,27 @@
-// const axios = require('axios').default;
-// import {axios from 'axios'
-// const api = require('./../api/axios');
 const { Router } = require('express');
-
 const router = Router();
 
-const axios = require('axios');
-
-const api = axios.create({
-  baseURL: 'https://quickly-egypt.com/api/v1/client/',
-});
+const { getProducts } = require('../api');
 
 /* GET index page. */
 router.get('/', (req, res) => {
   res.json({
-    text: 'Hi from express',
+    text: 'Hi man :)',
   });
 });
 
-router.get('/carts', async (req, res) => {
-  // let data = await axios.get('https://dummyjson.com/products');
+// products
+router.get('/products', async (req, res) => {
   try {
-    // let data = await axios.get('https://jsonplaceholder.typicode.com/users');
+    const { data } = await getProducts();
 
-    // api.get('/');
-
-    res.json(data);
-  } catch (e) {
+    res.json({ ...data, error: false });
+  } catch (err) {
     res.json({
-      error: 404,
+      error: true,
+      err,
     });
   }
-
-  // res.end
-  // res.end('dd')
 });
 
 module.exports = router;
