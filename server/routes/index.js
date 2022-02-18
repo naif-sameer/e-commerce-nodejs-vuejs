@@ -37,7 +37,7 @@ router.get('/products/:id', async (req, res) => {
 });
 
 // categories
-router.get('/categories', async (req, res) => {
+router.get('/products/categories', async (req, res) => {
   try {
     const { data } = await getCategories();
 
