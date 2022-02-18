@@ -1,7 +1,10 @@
 const { Router } = require('express');
+
 const router = Router();
 
-const { getProducts, getProduct, getCategories, getCategoryProducts } = require('../api');
+const {
+  getProducts, getProduct, getCategories, getCategoryProducts
+} = require('../api');
 
 /* GET index page. */
 router.get('/', (req, res) => {
@@ -49,7 +52,7 @@ router.get('/products/categories', async (req, res) => {
 
 // products of a category
 router.get('/products/category/:category', async (req, res) => {
-  const category = req.params.category;
+  const { category } = req.params;
   try {
     const { data } = await getCategoryProducts(category);
 
