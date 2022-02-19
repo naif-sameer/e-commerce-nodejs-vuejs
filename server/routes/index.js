@@ -3,7 +3,10 @@ const { Router } = require('express');
 const router = Router();
 
 const {
-  getProducts, getProduct, getCategories, getCategoryProducts
+  getProducts,
+  getProduct,
+  getCategories,
+  getCategoryProducts,
 } = require('../api');
 
 /* GET index page. */
