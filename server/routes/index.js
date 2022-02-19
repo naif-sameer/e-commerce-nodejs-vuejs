@@ -7,6 +7,7 @@ const {
   getProduct,
   getCategories,
   getCategoryProducts,
+  getProdcutSearch,
 } = require('../api');
 
 /* GET index page. */
@@ -30,12 +31,10 @@ router.get('/products', async (req, res) => {
   }
 });
 
-// product details
-router.get('/products/:id', async (req, res) => {
-  const productID = req.params.id;
+// search products
+router.get('/products/search', async (req, res) => {
   try {
-    const { data } = await getProduct(productID);
-
+    const { data } = await getProdcutSearch(req.query.q);
     res.json({ ...data, error: false });
   } catch (err) {
     res.json({ error: true, err });
@@ -58,6 +57,18 @@ router.get('/products/category/:category', async (req, res) => {
   const { category } = req.params;
   try {
     const { data } = await getCategoryProducts(category);
+
+    res.json({ ...data, error: false });
+  } catch (err) {
+    res.json({ error: true, err });
+  }
+});
+
+// product details
+router.get('/products/:id', async (req, res) => {
+  const productID = req.params.id;
+  try {
+    const { data } = await getProduct(productID);
 
     res.json({ ...data, error: false });
   } catch (err) {
