@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.BASE_URL,
+  baseURL: import.meta.env.BASE_URL || 'localhost:3000',
 });
 
-const getProducts = api.get('/products');
+const getProducts = () => axios.get('https://dummyjson.com/products');
 
 export { getProducts };
