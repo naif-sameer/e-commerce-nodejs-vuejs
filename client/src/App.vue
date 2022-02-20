@@ -21,6 +21,12 @@ body,
 html {
   padding: 0;
   margin: 0;
+  font-family: 'seguiemj', 'Courier New', Courier, monospace;
+}
+
+@font-face {
+  font-family: 'seguiemj';
+  src: local('Merienda'), url('@/assets/fonts/seguiemj.ttf') format('truetype');
 }
 
 img {

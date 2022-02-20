@@ -1,11 +1,13 @@
 <template>
   <n-card size="small" v-if="product">
-    <n-image
-      class="card-img"
-      object-fit="cover"
-      :src="product.thumbnail"
-      :alt="product.title"
-    />
+    <slot>
+      <n-image
+        class="card-img"
+        object-fit="cover"
+        :src="product.thumbnail"
+        :alt="product.title"
+      />
+    </slot>
 
     <div class="card-header">
       <h5>
@@ -13,6 +15,7 @@
           {{ product.title }}
         </router-link>
       </h5>
+      
       <span class="card-price"> {{ product.price }}$ </span>
 
       <n-tag> {{ product.brand }}</n-tag>
