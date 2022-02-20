@@ -10,4 +10,20 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+}
+</style>

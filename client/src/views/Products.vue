@@ -1,30 +1,28 @@
 <template>
-  <div>Products page</div>
+  <container>
+    <h1>Products page</h1>
 
-  <!-- {{products}} -->
-  <template v-for="item in products" :key="item.id">
-    <n-card>
-      <h4>
-        <router-link :to="'/products/' + item.id">
-          {{ item.title }}
-        </router-link>
-      </h4>
-
-      <p>
-        {{ item.description }}
-      </p>
-    </n-card>
-  </template>
+    <n-grid cols="1 576:2 768:3 992:4" :x-gap="6" :y-gap="6">
+      <template v-for="product in products" :key="product.id">
+        <n-grid-item>
+          <product-card :product="product" />
+        </n-grid-item>
+      </template>
+    </n-grid>
+  </container>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref } from 'vue';
-import { NCard } from 'naive-ui';
 import { getProducts } from '@/api';
+import ProductCard from '@/components/ProductCard.vue';
+import Container from '@/components/Container.vue';
+import { NGrid, NGridItem } from 'naive-ui';
+
 export default defineComponent({
   name: 'Products',
   setup(props) {
-    let arr = ref([]);
+    let arr = ref<Object[]>([]);
 
     onMounted(async () => {
       let { data } = await getProducts();
@@ -32,13 +30,15 @@ export default defineComponent({
       arr.value.push(...data.products);
     });
 
-    console.log(arr);
     return {
       products: arr,
     };
   },
   components: {
-    NCard,
+    ProductCard,
+    Container,
+    NGrid,
+    NGridItem,
   },
 });
 </script>
