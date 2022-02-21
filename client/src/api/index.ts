@@ -8,4 +8,6 @@ const getProducts = () => api.get('/products');
 
 const getProduct = (id: number) : object => api.get(`/products/${id}`);
 
-export { getProducts, getProduct };
+const getCategories = () : object => api.get(`/products/categories`);
+
+export { getProducts, getProduct,getCategories };
