@@ -1,7 +1,8 @@
 <template>
-  <container class="product-card" v-if="product.length > 0">
+  <container class="product-card" v-if="product.id">
     <h1>Product page</h1>
 
+ 
     <product-card :product="product">
       <n-carousel
         :show-arrow="true"
@@ -38,13 +39,14 @@ import { useRoute } from 'vue-router';
 export default defineComponent({
   name: 'Product details',
   setup(props) {
-    let product: ProductType = ref({});
+    let product: ProductType = ref({});  
 
     const productID: number = Number(useRoute().params.id);
 
     onMounted(async () => {
       let { data } = await getProduct(productID);
 
+      console.log(data)
       product.value = data;
     });
 
