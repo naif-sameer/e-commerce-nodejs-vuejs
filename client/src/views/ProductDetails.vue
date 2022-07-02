@@ -30,7 +30,6 @@
 <script lang="ts">
 import { defineComponent, onMounted, reactive, ref } from 'vue';
 import { getProduct } from '@/api';
-import { ProductType } from '@/types';
 import ProductCard from '@/components/ProductCard.vue';
 import Container from '@/components/Container.vue';
 import { NImage, NCarousel } from 'naive-ui';
@@ -39,7 +38,7 @@ import { useRoute } from 'vue-router';
 export default defineComponent({
   name: 'Product details',
   setup(props) {
-    let product: ProductType = ref({});  
+    let product = ref({});  
 
     const productID: number = Number(useRoute().params.id);
 

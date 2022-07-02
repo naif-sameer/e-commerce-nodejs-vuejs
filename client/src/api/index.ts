@@ -6,8 +6,11 @@ const api = axios.create({ baseURL: API_URL });
 
 const getProducts = () => api.get('/products');
 
-const getProduct = (id: number) : object => api.get(`/products/${id}`);
+const getProduct = (id: number): object => api.get(`/products/${id}`);
 
-const getCategories = () : object => api.get(`/products/categories`);
+const getCategories = (): object => api.get(`/products/categories`);
 
-export { getProducts, getProduct,getCategories };
+const getCategoryProducts = (category: string): object =>
+  api.get(`/products/category/${category}`);
+
+export { getProducts, getProduct, getCategories, getCategoryProducts };

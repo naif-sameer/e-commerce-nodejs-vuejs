@@ -1,7 +1,12 @@
 <template>
   <container>
     <header>
+      <h2>
         <router-link to="/products">Products</router-link>
+      </h2>
+      <h2>
+        <router-link to="/products/categories">Categories</router-link>
+      </h2>
     </header>
     Home page
   </container>
